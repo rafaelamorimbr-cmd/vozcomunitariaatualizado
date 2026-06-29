@@ -1,22 +1,31 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { jsxLocPlugin } from '@builder.io/vite-plugin-jsx-loc';
 import path from 'node:path';
 
 export default defineConfig({
-  plugins:[react(), tailwindcss(), jsxLocPlugin()],
-  root: path.resolve(import.meta.dirname,'client'),
-  resolve:{
-    alias:{
-      '@': path.resolve(import.meta.dirname,'client','src'),
-      '@shared': path.resolve(import.meta.dirname,'shared'),
-      '@assets': path.resolve(import.meta.dirname,'attached_assets'),
-    }
+  plugins: [
+    react(),
+    tailwindcss()
+  ],
+
+  root: path.resolve(import.meta.dirname, 'client'),
+
+  resolve: {
+    alias: {
+      '@': path.resolve(import.meta.dirname, 'client', 'src'),
+      '@shared': path.resolve(import.meta.dirname, 'shared'),
+      '@assets': path.resolve(import.meta.dirname, 'attached_assets'),
+    },
   },
-  build:{
-    outDir:path.resolve(import.meta.dirname,'dist/public'),
-    emptyOutDir:true,
+
+  build: {
+    outDir: path.resolve(import.meta.dirname, 'dist/public'),
+    emptyOutDir: true,
   },
-  server:{host:true,port:3000}
+
+  server: {
+    host: true,
+    port: 3000,
+  },
 });
